@@ -26,6 +26,7 @@
           from: dateRange.from,    
           to: dateRange.to,                         
           'where': 'properties["operating system"] == "OS X"'
+          'method':'sum'
       };
 
       MP.api.segment("Landing Page Loaded", "Duration", params).done(function(results) {

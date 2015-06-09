@@ -51,26 +51,38 @@
         var day = today.getDay();
         switch(day){
           case 0:
-            var monday = today;
-            today = new Date();
+            var monday = new Date();
+            monday.setHours(0,0,0,0);
             break;
           case 1:
-            var monday = ;
+            var monday = new Date();
+            monday = monday.getDate() -1;
+            monday.setHours(0,0,0,0);
             break;
           case 2:
-            var monday = ;
+            var monday = new Date();
+            monday = monday.getDate() -2;
+            monday.setHours(0,0,0,0);
             break;
           case 3:
-            var monday = ;
+            var monday = new Date();
+            monday = monday.getDate() -3;
+            monday.setHours(0,0,0,0);
             break;
           case 4:
-            var monday = ;
+            var monday = new Date();
+            monday = monday.getDate() -4;
+            monday.setHours(0,0,0,0);
             break;
           case 5:
-            var monday = ;
+            var monday = new Date();
+            monday = monday.getDate() -5;
+            monday.setHours(0,0,0,0);
             break;
           case 6:
-            var monday = ;
+            var monday = new Date();
+            monday = monday.getDate() -6;
+            monday.setHours(0,0,0,0);
             break;
         }
         

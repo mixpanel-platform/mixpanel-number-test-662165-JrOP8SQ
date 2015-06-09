@@ -26,14 +26,12 @@
         var params = {
           from: dateRange.from,    
           to: dateRange.to,                         
-          type: 'general',                        
-          unit: 'day',                            
           // the following are undefined by default
           'where': 'properties["operating system"] == "OS X"',     
           'method': 'sum',                    
       };
 
-      MP.api.segment("Landing Page Loaded", "Duration", dateRange).done(function(results) {
+      MP.api.segment("Landing Page Loaded", "Duration", params).done(function(results) {
         eventGraph.MPChart('setData', results);
         console.log(results);
       });

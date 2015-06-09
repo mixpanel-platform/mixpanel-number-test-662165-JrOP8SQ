@@ -79,8 +79,7 @@
             monday.setDate(monday.getDate()-5);
             break;
         }
-        console.log("Correct = "+dateRange.from+", Monday = "+monday);
-        
+
         /* Query and chart for Web */
         var params = {
           from: dateRange.from,    
@@ -88,7 +87,6 @@
           'where': 'properties["operating system"] == "OS X"',
           'method':'sum'
       };
-
       MP.api.segment("Landing Page Loaded", "Duration", params).done(function(results) {
         var durationObject = {};
         durationObject["Web Duration"] = results.values();
@@ -96,12 +94,12 @@
         //console.log(results.values());
       });
       var sumParams = {
-        from: monday,
-        to: today,
-        'where':'properties["operating system"] = "OS X"',
+        from: monday,    
+        to: today,                         
+        'where': 'properties["operating system"] == "OS X"',
         'method':'sum'
       };
-      MP.api.segment("Landing Page Loaded", "Duration", params).done(function(results) {
+      MP.api.segment("Landing Page Loaded", "Duration", sumParams).done(function(results) {
         var sum = 0;
         for (var date in results.values()) {
           if (results.values().hasOwnProperty(date)) {

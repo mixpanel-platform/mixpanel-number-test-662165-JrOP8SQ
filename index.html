@@ -27,11 +27,10 @@
           from: dateRange.from,    
           to: dateRange.to,                         
           // the following are undefined by default
-          'where': 'properties["operating system"] == "OS X"',     
           'method': 'sum',                    
       };
 
-      MP.api.segment("Landing Page Loaded", "properties['Duration']", params).done(function(results) {
+      MP.api.segment("Landing Page Loaded", "Duration", {from: dateRange.from, to: dateRange.to, method:'sum'}).done(function(results) {
         eventGraph.MPChart('setData', results);
         console.log(results);
       });

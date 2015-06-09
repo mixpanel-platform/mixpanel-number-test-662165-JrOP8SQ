@@ -79,7 +79,6 @@
             monday.setDate(monday.getDate()-5);
             break;
         }
-        
         console.log("Today = "+today.toLocaleString()+", Monday = "+monday.toLocaleString());
         
         /* Query and chart for Web */
@@ -95,6 +94,22 @@
         durationObject["Web Duration"] = results.values();
         webGraph.MPChart('setData', durationObject);
         console.log(results.values());
+      });
+      var sumParams = {
+        from: monday,
+        to: today,
+        'where':'properties["operating system"] = "OS X"',
+        'method':'sum'
+      };
+      MP.api.segment("Landing Page Loaded", "Duration", params).done(function(results) {
+        var sum = 0;
+        for (var date in results.values()) {
+          if (results.values().hasOwnProperty(date)) {
+            sum += results.values().date;
+          }
+        }
+        console.log(results.values());
+        console.log(sum);
       });
       
       /* Query and chart for Android */

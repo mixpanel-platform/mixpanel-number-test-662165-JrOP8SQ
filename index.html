@@ -10,14 +10,16 @@
     <div class="mixpanel-platform-section">
       <div id="dateSelect" style="float: right;"></div>
       <div style="clear: both;"></div>
-      <div id="graph"></div>
+      <div id="webGraph"></div>
+      <br clear="all" />
+      <div id="androidGraph"></div>
     </div>
     <script>
     $(document).ready(function(){
       runQuery();
     });
       var dateSelect  = $('#dateSelect').MPDatepicker();
-      var eventGraph  = $('#graph').MPChart({chartType: 'line'});
+      var webGraph  = $('#webGraph').MPChart({chartType: 'line'});
 
 
       var runQuery = function() {
@@ -34,7 +36,7 @@
       MP.api.segment("Landing Page Loaded", "Duration", params).done(function(results) {
         var durationObject = {};
         durationObject["Duration"] = results.values();
-        eventGraph.MPChart('setData', durationObject);
+        webGraph.MPChart('setData', durationObject);
         console.log(results.values());
       });
       

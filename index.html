@@ -11,7 +11,7 @@
       <div id="dateSelect" style="float: right;"></div>
       <div style="clear: both;"></div>
       <div id="webGraph"></div>
-      <br clear="all" />
+      <br clear="all" /><br clear="all" />
       <div id="androidGraph"></div>
     </div>
     <script>
@@ -36,7 +36,7 @@
 
       MP.api.segment("Landing Page Loaded", "Duration", params).done(function(results) {
         var durationObject = {};
-        durationObject["Duration"] = results.values();
+        durationObject["Web Duration"] = results.values();
         webGraph.MPChart('setData', durationObject);
         console.log(results.values());
       });
@@ -51,7 +51,7 @@
 
       MP.api.segment("Landing Page Loaded", "Duration", params).done(function(results) {
         var durationObject = {};
-        durationObject["Duration"] = results.values();
+        durationObject["Android Duration"] = results.values();
         androidGraph.MPChart('setData', durationObject);
         console.log(results.values());
       });

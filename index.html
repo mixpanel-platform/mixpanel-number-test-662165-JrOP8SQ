@@ -22,7 +22,7 @@
 
       var runQuery = function() {
         var dateRange = dateSelect.MPDatepicker('value');
-        alert(dateRange);
+        alert(dateRange.from);
         var params = {
           from: dateRange.from,    
           to: dateRange.to,                         

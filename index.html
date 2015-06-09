@@ -47,6 +47,32 @@
 
       var runQuery = function() {
         var dateRange = dateSelect.MPDatepicker('value');
+        var today = new Date();
+        var day = today.getDay();
+        switch(day){
+          case 0:
+            var monday = today;
+            today = new Date();
+            break;
+          case 1:
+            var monday = ;
+            break;
+          case 2:
+            var monday = ;
+            break;
+          case 3:
+            var monday = ;
+            break;
+          case 4:
+            var monday = ;
+            break;
+          case 5:
+            var monday = ;
+            break;
+          case 6:
+            var monday = ;
+            break;
+        }
         
         /* Query and chart for Web */
         var params = {

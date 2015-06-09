@@ -36,7 +36,7 @@
       
       <h1>Android Watch Duration</h1><br clear="all" />
       <div id="androidGraph"></div><br clear="all" />
-      <div class="durationSumDiv">Week's Watch Duration Sum: <span id="androidDurationSum">1234</span> s.</div>
+      <div class="durationSumDiv">Week's Watch Duration Sum: <span id="androidDurationSum"></span> s.</div>
       
     </div>
     <script>
@@ -83,7 +83,7 @@
             break;
         }
 
-        /* Query and chart for Web */
+        /* Query, chart & sum for Web */
         var params = {
           from: dateRange.from,    
           to: dateRange.to,                         
@@ -112,7 +112,7 @@
         document.getElementById("webDurationSum").innerHTML = sum.toFixed(2);
       });
       
-      /* Query and chart for Android */
+      /* Query, chart & sum for Android */
       var params = {
           from: dateRange.from,    
           to: dateRange.to,                         
@@ -125,6 +125,21 @@
         durationObject["Android Duration"] = results.values();
         androidGraph.MPChart('setData', durationObject);
         //console.log(results.values());
+      });
+      var sumParams = {
+        from: monday,    
+        to: today,                         
+        'where': 'properties["operating system"] == "Windows"',
+        'method':'sum'
+      };
+      MP.api.segment("Landing Page Loaded", "Duration", params).done(function(results) {
+        var sum = 0;
+        for (var date in results.values()) {
+          if (results.values().hasOwnProperty(date)) {
+            sum += results.values()[date];
+          }
+        }
+        document.getElementById("androidDurationSum").innerHTML = sum.toFixed(2);
       });
 
     };

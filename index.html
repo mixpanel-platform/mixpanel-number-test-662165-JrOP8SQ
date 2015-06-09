@@ -26,11 +26,10 @@
         var params = {
           from: dateRange.from,    
           to: dateRange.to,                         
-          // the following are undefined by default
-          'method': 'sum',                    
+                 
       };
 
-      MP.api.segment("Landing Page Loaded", "Duration", {from: dateRange.from, to: dateRange.to, method:'sum'}).done(function(results) {
+      MP.api.segment("Landing Page Loaded", "Duration", params).done(function(results) {
         eventGraph.MPChart('setData', results);
         console.log(results.values);
       });

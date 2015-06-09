@@ -22,10 +22,27 @@
 
       var runQuery = function() {
         var dateRange = dateSelect.MPDatepicker('value');
+        
+        /* Query and chart for Web */
         var params = {
           from: dateRange.from,    
           to: dateRange.to,                         
           'where': 'properties["operating system"] == "OS X"',
+          'method':'sum'
+      };
+
+      MP.api.segment("Landing Page Loaded", "Duration", params).done(function(results) {
+        var durationObject = {};
+        durationObject["Duration"] = results.values();
+        eventGraph.MPChart('setData', durationObject);
+        console.log(results.values());
+      });
+      
+      /* Query and chart for Android */
+      var params = {
+          from: dateRange.from,    
+          to: dateRange.to,                         
+          'where': 'properties["operating system"] == "Windows"',
           'method':'sum'
       };
 

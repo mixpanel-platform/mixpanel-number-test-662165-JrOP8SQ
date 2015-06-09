@@ -40,15 +40,20 @@
       
     </div>
     <script>
-    $(document).ready(function(){
-      runQuery();
-    });
+      /* Run query upon doc load */
+      $(document).ready(function(){
+        runQuery();
+      });
+    
+      /* Set some variables */
       var dateSelect  = $('#dateSelect').MPDatepicker();
       var webGraph  = $('#webGraph').MPChart({chartType: 'line'});
       var androidGraph = $('#androidGraph').MPChart({chartType: 'line'});
 
-
+      /* Mixpanel query function */
       var runQuery = function() {
+        
+        /* Set today's date and Monday's date */
         var dateRange = dateSelect.MPDatepicker('value');
         var today = new Date();
         var day = today.getDay();
@@ -83,12 +88,12 @@
             break;
         }
 
-        /* Query, chart & sum for Web */
-        var params = {
-          from: dateRange.from,    
-          to: dateRange.to,                         
-          'where': 'properties["operating system"] == "OS X"',
-          'method':'sum'
+      /* Query, chart & sum durations for Web */
+      var params = {
+        from: dateRange.from,    
+        to: dateRange.to,                         
+        'where': 'properties["operating system"] == "OS X"',
+        'method':'sum'
       };
       MP.api.segment("Landing Page Loaded", "Duration", params).done(function(results) {
         var durationObject = {};
@@ -112,14 +117,13 @@
         document.getElementById("webDurationSum").innerHTML = sum.toFixed(2);
       });
       
-      /* Query, chart & sum for Android */
+      /* Query, chart & sum durations for Android */
       var params = {
           from: dateRange.from,    
           to: dateRange.to,                         
           'where': 'properties["operating system"] == "Windows"',
           'method':'sum'
       };
-
       MP.api.segment("Landing Page Loaded", "Duration", params).done(function(results) {
         var durationObject = {};
         durationObject["Android Duration"] = results.values();
@@ -141,9 +145,10 @@
         }
         document.getElementById("androidDurationSum").innerHTML = sum.toFixed(2);
       });
-
     };
-
+    /* End query */
+  
+    /* Run query on date change */
       dateSelect.on('change', runQuery);
     </script>
   </body>

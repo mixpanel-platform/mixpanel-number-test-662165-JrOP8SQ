@@ -22,11 +22,10 @@
 
       var runQuery = function() {
         var dateRange = dateSelect.MPDatepicker('value');
-        alert(dateRange.from);
         var params = {
           from: dateRange.from,    
           to: dateRange.to,                         
-                 
+          'where': 'properties["operating system"] == "OS X"'
       };
 
       MP.api.segment("Landing Page Loaded", "Duration", params).done(function(results) {

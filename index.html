@@ -103,8 +103,7 @@
         var sum = 0;
         for (var date in results.values()) {
           if (results.values().hasOwnProperty(date)) {
-            
-            console.log(results.values()[date]);
+            sum += results.values()[date];
           }
         }
         console.log(results.values());

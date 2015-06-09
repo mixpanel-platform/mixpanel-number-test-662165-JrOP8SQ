@@ -79,7 +79,7 @@
             monday.setDate(monday.getDate()-5);
             break;
         }
-        //console.log("Today = "+today.toLocaleString()+", Monday = "+monday.toLocaleString());
+        /console.log("Correct = "+dateRange.from+", Monday = "+monday;
         
         /* Query and chart for Web */
         var params = {
@@ -96,12 +96,12 @@
         //console.log(results.values());
       });
       var sumParams = {
-        from: monday.valueOf(),
-        to: today.valueOf(),
+        from: monday,
+        to: today,
         'where':'properties["operating system"] = "OS X"',
         'method':'sum'
       };
-      MP.api.segment("Landing Page Loaded", "Duration", sumParams).done(function(results) {
+      MP.api.segment("Landing Page Loaded", "Duration", params).done(function(results) {
         var sum = 0;
         for (var date in results.values()) {
           if (results.values().hasOwnProperty(date)) {

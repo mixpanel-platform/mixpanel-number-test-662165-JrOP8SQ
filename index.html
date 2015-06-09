@@ -33,7 +33,7 @@
           'method': 'sum',                    
       };
 
-      MP.api.segment("Landing Page Loaded", "Duration", params).done(function(results) {
+      MP.api.segment("Landing Page Loaded", "Duration", dateRange).done(function(results) {
         eventGraph.MPChart('setData', results);
         console.log(results);
       });

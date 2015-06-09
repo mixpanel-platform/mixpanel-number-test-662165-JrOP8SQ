@@ -20,6 +20,7 @@
     });
       var dateSelect  = $('#dateSelect').MPDatepicker();
       var webGraph  = $('#webGraph').MPChart({chartType: 'line'});
+      var androidGraph = $('#androidGraph').MPChart({chartType: 'line'});
 
 
       var runQuery = function() {
@@ -51,7 +52,7 @@
       MP.api.segment("Landing Page Loaded", "Duration", params).done(function(results) {
         var durationObject = {};
         durationObject["Duration"] = results.values();
-        eventGraph.MPChart('setData', durationObject);
+        androidGraph.MPChart('setData', durationObject);
         console.log(results.values());
       });
 

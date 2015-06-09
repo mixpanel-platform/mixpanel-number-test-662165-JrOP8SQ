@@ -30,7 +30,7 @@
 
       MP.api.segment("Landing Page Loaded", "Duration", params).done(function(results) {
         eventGraph.MPChart('setData', results);
-        console.log(results.values);
+        console.log(results.values());
       });
 
     };

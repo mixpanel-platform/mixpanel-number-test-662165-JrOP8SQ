@@ -96,12 +96,12 @@
         //console.log(results.values());
       });
       var sumParams = {
-        from: monday,
-        to: today,
+        from: monday.valueOf(),
+        to: today.valueOf(),
         'where':'properties["operating system"] = "OS X"',
         'method':'sum'
       };
-      MP.api.segment("Landing Page Loaded", "Duration", sumParams).done(function(results) {
+      MP.api.segment("Landing Page Loaded", "Duration", params).done(function(results) {
         var sum = 0;
         for (var date in results.values()) {
           if (results.values().hasOwnProperty(date)) {
